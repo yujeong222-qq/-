@@ -171,50 +171,50 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
   const completionRate = totalHabits > 0 ? Math.round((completedToday / totalHabits) * 100) : 0;
 
   const categoryLabels: Record<string, { label: string; bg: string; text: string; border: string }> = {
-    academy: { label: '학업전공', bg: 'bg-indigo-500/10', text: 'text-indigo-400', border: 'border-indigo-500/20' },
-    career: { label: '경력역량', bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20' },
-    health: { label: '건강루틴', bg: 'bg-rose-500/10', text: 'text-rose-400', border: 'border-rose-500/20' },
-    hobby: { label: '취미독서', bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/20' },
-    network: { label: '인맥대외', bg: 'bg-sky-500/10', text: 'text-sky-400', border: 'border-sky-500/20' }
+    academy: { label: '학업전공', bg: 'bg-indigo-50', text: 'text-indigo-700', border: 'border-indigo-100' },
+    career: { label: '경력역량', bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-100' },
+    health: { label: '건강루틴', bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-100' },
+    hobby: { label: '취미독서', bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-100' },
+    network: { label: '인맥대외', bg: 'bg-sky-50', text: 'text-sky-700', border: 'border-sky-100' }
   };
 
   return (
-    <section id="planner" className="py-20 bg-slate-950 text-white relative px-4">
+    <section id="planner" className="py-20 bg-white text-slate-800 relative px-4 border-t border-slate-100">
       {/* Background flare */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-550/5 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-5xl mx-auto z-10 relative">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3">
-            <span className="text-sm text-indigo-400 font-mono tracking-wider font-bold uppercase">하루 성장 루틴 플래너</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">지능형 습관 빌더 & 추적기</h2>
-            <p className="text-slate-400 text-sm md:text-base max-w-xl font-sans">
-              작심삼일 탈출! 성향 분석에서 얻은 맞춤 습관과 본인의 학업·자격증 습관을 한자리에서 체계적으로 관리하세요.
+            <span className="text-sm text-indigo-600 font-bold uppercase tracking-wider">하루 성장 루틴 플래너</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">지능형 습관 빌더 & 추적기</h2>
+            <p className="text-slate-600 text-sm md:text-base max-w-xl font-sans">
+              작심삼일은 그만! 성향 분석에서 로드한 맞춤 루틴과 나만의 학업·취업 습관을 한자리에서 똑똑하게 진척시키세요.
             </p>
           </div>
 
           <button
             onClick={handleResetDefaults}
-            className="self-start md:self-center px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white rounded-lg text-xs font-mono flex items-center gap-1.5 border border-slate-800 cursor-pointer transition"
+            className="self-start md:self-center px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-850 rounded-lg text-xs font-mono flex items-center gap-1.5 border border-slate-250 cursor-pointer transition"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            초기화 (기본 세팅)
+            기본 값으로 복구
           </button>
         </div>
 
         {/* Global Tracker Widgets Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {/* Progress gauge card */}
-          <div className="md:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 flex flex-col justify-center items-center text-center space-y-4">
-            <h4 className="text-xs uppercase font-mono tracking-widest text-slate-400 flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-              오늘의 실천율
+          <div className="md:col-span-1 bg-slate-50 p-6 rounded-2xl border border-slate-200/60 flex flex-col justify-center items-center text-center space-y-4">
+            <h4 className="text-xs uppercase font-bold tracking-widest text-slate-400 flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5 text-indigo-600" />
+              오늘의 실천량
             </h4>
 
             {/* Circular representation */}
             <div className="relative w-32 h-32 flex items-center justify-center">
               <svg className="w-full h-full transform -rotate-90">
-                <circle cx="64" cy="64" r="54" strokeWidth="6" stroke="#1e293b" fill="transparent" />
+                <circle cx="64" cy="64" r="54" strokeWidth="6" stroke="#e2e8f0" fill="transparent" />
                 <circle
                   cx="64"
                   cy="64"
@@ -235,30 +235,30 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
                 </defs>
               </svg>
               <div className="absolute text-center">
-                <span className="text-3xl font-black font-mono tracking-tight bg-gradient-to-r from-emerald-400 to-indigo-400 bg-clip-text text-transparent">
+                <span className="text-3xl font-black font-mono tracking-tight text-slate-850">
                   {completionRate}%
                 </span>
-                <p className="text-[10px] text-slate-500 font-mono mt-0.5">{completedToday}/{totalHabits} 완료됨</p>
+                <p className="text-[10px] text-slate-450 font-mono mt-0.5">{completedToday}/{totalHabits} 완료됨</p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-400 max-w-[170px] leading-relaxed">
+            <p className="text-xs text-slate-500 max-w-[170px] leading-relaxed">
               {completionRate === 100
-                ? '축하합니다! 완벽을 향한 열정이 빛난 오늘입니다. ✨'
+                ? '축하합니다! 완벽을 향한 청춘의 열정이 빛납니다. ✨'
                 : completionRate >= 50
-                ? '절반 이상 채웠습니다. 조금만 더 힘차게 하루를 갈무리해보세요!'
-                : '한 걸음씩 나가는 것만으로도 충분히 위대합니다.'}
+                ? '절반을 완수했습니다. 조금만 더 달리면 오늘의 기적 완성!'
+                : '한 걸음이라도 나아간 것은 포기하지 않았다는 뜻입니다.'}
             </p>
           </div>
 
           {/* Core content: Tabs + Routine list cards */}
           <div className="md:col-span-3 flex flex-col gap-6">
             {/* Category tabs */}
-            <div className="flex flex-wrap items-center gap-2 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800">
+            <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-1.5 rounded-xl border border-slate-200/60">
               <button
                 onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition cursor-pointer ${
-                  activeTab === 'all' ? 'bg-slate-800 text-emerald-400 border border-slate-700' : 'text-slate-400 hover:text-slate-200'
+                className={`px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition cursor-pointer ${
+                  activeTab === 'all' ? 'bg-white text-indigo-600 border border-slate-200/80 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
                 전체보기 ({habits.length})
@@ -269,8 +269,8 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition cursor-pointer ${
-                      activeTab === key ? `bg-slate-800 ${info.text} border border-slate-700` : 'text-slate-400 hover:text-slate-200'
+                    className={`px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition cursor-pointer ${
+                      activeTab === key ? `bg-white ${info.text} border border-slate-200/80 shadow-xs` : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
                     {info.label} ({count})
@@ -280,13 +280,13 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
             </div>
 
             {/* List with motion */}
-            <div className="bg-slate-900/40 rounded-2xl border border-slate-800 p-5 space-y-4 shadow-xl">
+            <div className="bg-slate-50 rounded-2xl border border-slate-200/60 p-5 space-y-4 shadow-xs">
               <AnimatePresence mode="popLayout">
                 {filteredHabits.length > 0 ? (
                   <div className="grid grid-cols-1 gap-3">
                     {filteredHabits.map(habit => {
                       const isDone = !!habit.completedDays[todayStr];
-                      const cat = categoryLabels[habit.category] || { label: '일반기타', bg: 'bg-slate-500/10', text: 'text-slate-400', border: 'border-slate-500/20' };
+                      const cat = categoryLabels[habit.category] || { label: '일반기타', bg: 'bg-slate-100', text: 'text-slate-500', border: 'border-slate-200' };
 
                       return (
                         <motion.div
@@ -298,33 +298,33 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
                           onClick={() => handleToggleHabit(habit.id)}
                           className={`flex items-center justify-between p-4 rounded-xl border transition-all duration-300 cursor-pointer select-none group relative overflow-hidden ${
                             isDone
-                              ? 'bg-slate-900/90 border-emerald-500/40'
-                              : 'bg-slate-900/40 border-slate-800/80 hover:bg-slate-900/80 hover:border-slate-700'
+                              ? 'bg-emerald-50/20 border-emerald-250'
+                              : 'bg-white border-slate-200 hover:bg-slate-50 hover:border-slate-350'
                           }`}
                         >
                           <div className="flex items-center gap-4">
                             {/* Custom animated checkbox */}
                             <div className={`w-6 h-6 rounded-lg border flex items-center justify-center transition-all ${
-                              isDone ? 'bg-gradient-to-r from-emerald-500 to-teal-500 border-transparent text-slate-950 scale-105' : 'border-slate-600 group-hover:border-emerald-500/70'
+                              isDone ? 'bg-gradient-to-r from-emerald-500 to-teal-500 border-transparent text-white scale-105' : 'border-slate-300 group-hover:border-emerald-500'
                             }`}>
                               {isDone && <Check className="w-4 h-4 stroke-[3px]" />}
                             </div>
 
                             <div className="space-y-1">
-                              <span className={`text-sm font-bold block transition-all ${isDone ? 'text-slate-400 line-through' : 'text-slate-100'}`}>
+                              <span className={`text-sm font-bold block transition-all ${isDone ? 'text-slate-400 line-through decoration-slate-300' : 'text-slate-800'}`}>
                                 {habit.text}
                               </span>
                               <div className="flex items-center gap-2 flex-wrap">
                                 <span className={`px-2 py-0.5 rounded-md text-[10px] border font-semibold ${cat.bg} ${cat.text} ${cat.border}`}>
                                   {cat.label}
                                 </span>
-                                <span className="text-[10px] text-slate-500 font-mono">
+                                <span className="text-[10px] text-slate-400 font-mono">
                                   {habit.frequency}
                                 </span>
                                 {habit.streak > 0 && (
-                                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-mono">
-                                    <TrendingUp className="w-3 h-3 text-amber-400" />
-                                    {habit.streak}일 연속
+                                  <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-amber-50 border border-amber-200 text-amber-700 text-[10px] font-mono">
+                                    <TrendingUp className="w-3 h-3 text-amber-600" />
+                                    {habit.streak}일 연속 실천중
                                   </span>
                                 )}
                               </div>
@@ -335,7 +335,7 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
                             {habit.isCustom && (
                               <button
                                 onClick={(e) => handleDeleteHabit(habit.id, e)}
-                                className="p-2 opacity-0 group-hover:opacity-100 hover:bg-red-500/10 text-slate-500 hover:text-red-400 rounded-lg transition-all focus:opacity-100 cursor-pointer"
+                                className="p-2 opacity-0 group-hover:opacity-100 hover:bg-red-50 text-slate-400 hover:text-red-5050 hover:text-red-600 rounded-lg transition-all focus:opacity-100 cursor-pointer"
                                 title="제거"
                               >
                                 <Trash2 className="w-4 h-4" />
@@ -352,8 +352,8 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
                     animate={{ opacity: 1 }}
                     className="p-12 text-center text-slate-500 space-y-2 font-sans"
                   >
-                    <p className="text-base text-slate-400">등록된 성향 습관이 비어 있습니다.</p>
-                    <p className="text-xs text-slate-600">위의 성향 검사를 진행하여 맞춤형 루틴을 등록하거나 아래 폼으로 커스텀 다짐을 등록해보세요!</p>
+                    <p className="text-base text-slate-600 font-bold">진행할 성향 습관이 비어있습니다.</p>
+                    <p className="text-xs text-slate-400">위의 성향 분석 검사를 받아 추천습관을 즉각 탑재해 두거나, 아래 입력폼으로 나만의 다짐을 추가해보세요!</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -362,20 +362,20 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
         </div>
 
         {/* Append habit form */}
-        <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-800 shadow-xl">
-          <h4 className="text-sm font-extrabold text-slate-100 mb-4 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            나만의 자기계발 루틴 직접 등록하기
+        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+          <h4 className="text-sm font-extrabold text-slate-800 mb-4 flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-emerald-600" />
+            나만의 학업 및 활동 루틴 직접 큐레이션하기
           </h4>
 
           <form onSubmit={handleAddHabit} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
             <div className="md:col-span-6">
               <input
                 type="text"
-                placeholder="예: 매일 자격증 인강 1강 수강, 영어 아티클 1편 정독..."
+                placeholder="예: 영단어 30개 외우기, 매일 대외활동 수집하기, 주 1회 블로그 글쓰기..."
                 value={newHabitText}
                 onChange={(e) => setNewHabitText(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-indigo-500 text-slate-200 outline-none rounded-xl text-xs md:text-sm transition placeholder:text-slate-600"
+                className="w-full px-4 py-3 bg-white border border-slate-250 focus:border-indigo-500 hover:border-slate-300 text-slate-800 outline-none rounded-xl text-xs md:text-sm transition placeholder:text-slate-400 font-medium"
               />
             </div>
 
@@ -383,7 +383,7 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
               <select
                 value={newHabitCategory}
                 onChange={(e: any) => setNewHabitCategory(e.target.value)}
-                className="w-full px-3 py-3 bg-slate-950 border border-slate-800 focus:border-indigo-500 text-slate-300 outline-none rounded-xl text-xs md:text-sm transition"
+                className="w-full px-3 py-3 bg-white border border-slate-250 focus:border-indigo-500 text-slate-700 outline-none rounded-xl text-xs md:text-sm transition font-medium cursor-pointer"
               >
                 <option value="academy">학업전공</option>
                 <option value="career">경력역량</option>
@@ -397,7 +397,7 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
               <select
                 value={newHabitFreq}
                 onChange={(e) => setNewHabitFreq(e.target.value)}
-                className="w-full px-3 py-3 bg-slate-950 border border-slate-800 focus:border-indigo-500 text-slate-400 outline-none rounded-xl text-xs md:text-sm transition"
+                className="w-full px-3 py-3 bg-white border border-slate-250 focus:border-indigo-500 text-slate-700 outline-none rounded-xl text-xs md:text-sm transition font-medium cursor-pointer"
               >
                 <option value="Daily">매일 (Daily)</option>
                 <option value="3 times/week">주 3회</option>
@@ -408,7 +408,7 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs md:text-sm transition-all shadow-md flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full py-3 bg-indigo-650 hover:bg-indigo-600 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs md:text-sm transition-all shadow-sm flex items-center justify-center gap-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <Plus className="w-4 h-4" />
                 루틴 추가
@@ -426,11 +426,11 @@ export default function ActionTracker({ appliedHabits, onClearAppliedHabits }: A
               exit={{ opacity: 0, y: 20, x: '-50%' }}
               className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs md:text-sm font-semibold border bg-slate-900 text-white min-w-[280px] max-w-md"
               style={{
-                borderColor: msg.type === 'success' ? '#10b981/40' : '#ef4444/40',
+                borderColor: msg.type === 'success' ? '#10b981' : '#ef4444',
               }}
             >
               {msg.type === 'success' ? (
-                <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
               ) : (
                 <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
               )}
