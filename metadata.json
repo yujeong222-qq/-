@@ -1,0 +1,6 @@
+{
+  "name": "대학생 자기계발 랜딩페이지",
+  "description": "대학생들의 성장 성향 분석과 융합된 고품격 자기계발 랜딩페이지 및 루틴 플래너",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
