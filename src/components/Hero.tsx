@@ -1,134 +1,121 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { motion } from 'motion/react';
-import { ChevronDown, Sparkles, Target, Compass, BookOpen, ClipboardList } from 'lucide-react';
+import { ChevronDown, Sparkles, Compass, ClipboardList } from 'lucide-react';
 
 interface HeroProps {
   onStartQuiz: () => void;
   onGoToPlanner: () => void;
-  onGoToResources: () => void;
 }
 
-export default function Hero({ onStartQuiz, onGoToPlanner, onGoToResources }: HeroProps) {
+export default function Hero({ onStartQuiz, onGoToPlanner }: HeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 90 } },
   };
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex flex-col justify-center items-center bg-gradient-to-b from-slate-50/80 via-white to-slate-50/40 text-slate-800 px-6 overflow-hidden py-16">
-      {/* Decorative ambient blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-100/40 rounded-full blur-3xl -z-10 animate-pulse duration-[8000ms]" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-100/40 rounded-full blur-3xl -z-10 animate-pulse duration-[6000ms]" />
+    <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center bg-white text-slate-800 px-6 overflow-hidden py-16 border-b border-slate-100">
+      {/* Decorative ambient blurred shapes */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-50 rounded-full blur-3xl -z-10 animate-pulse duration-[8000ms]" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-50 rounded-full blur-3xl -z-10 animate-pulse duration-[6000ms]" />
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="w-full max-w-5xl text-center space-y-8 z-10"
-      >
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-1.5 rounded-full text-emerald-700 text-sm font-semibold tracking-wide shadow-xs">
-          <Sparkles className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '4s' }} />
-          대학생 성장 관리 & 라이프 스타일 솔루션
-        </motion.div>
+      <div className="max-w-5xl mx-auto w-full z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Text Column */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="md:col-span-7 text-left space-y-6"
+          >
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 px-3.5 py-1.5 rounded-full text-emerald-800 text-xs font-bold tracking-wide shadow-2xs">
+              <Sparkles className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '4s' }} />
+              방황하는 대학생을 위한 성장 플랫폼 — UniGrowth
+            </motion.div>
 
-        <motion.h1
-          variants={itemVariants}
-          className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight"
-        >
-          캠퍼스 라이프를 <br className="sm:hidden" />
-          <span className="text-transparent bg-gradient-to-r from-emerald-600 to-indigo-600 bg-clip-text font-black">
-            나만의 실시간 성장 큐레이션
-          </span>
-          으로 채우다
-        </motion.h1>
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight"
+            >
+              어제보다 성장한 <br />
+              <span className="text-transparent bg-gradient-to-r from-emerald-600 to-indigo-650 bg-clip-text font-black">
+                나를 만드는 습관
+              </span>
+            </motion.h1>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-slate-600 text-base md:text-xl max-w-2xl mx-auto leading-relaxed font-sans"
-        >
-          방황하는 대학생활은 그만! UniGrowth와 함께 과학적인 성장 DNA를 분석하고, <br className="hidden md:inline" />
-          네트워크·대외활동·자격증 로드맵을 체계화하여 확실한 스펙과 커리어를 기획해 나가세요.
-        </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-slate-600 text-sm md:text-base lg:text-lg leading-relaxed font-sans font-medium"
+            >
+              전공 공부, 어학, 운동, 자격증까지 <br className="sm:hidden" />
+              대학생을 위한 올인원 자기계발 로드맵
+            </motion.p>
 
-        {/* Dynamic Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-          <button
+            {/* Main Interactive Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-3.5 pt-2">
+              <button
+                onClick={onStartQuiz}
+                className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold rounded-2xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_25px_rgba(16,185,129,0.25)] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+              >
+                <Compass className="w-5 h-5 text-white stroke-[2.5]" />
+                지금 시작하기
+              </button>
+              <button
+                onClick={onGoToPlanner}
+                className="w-full sm:w-auto px-7 py-3.5 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-extrabold rounded-2xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-250 shadow-2xs flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+              >
+                <ClipboardList className="w-5 h-5 text-slate-5050 text-slate-500" />
+                나의 루틴 플래너
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image/Banner Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: 'spring', stiffness: 60, delay: 0.2 }}
+            className="md:col-span-5 relative w-full h-auto flex justify-center items-center"
+          >
+            {/* Visual Frame */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-50 to-indigo-50 rounded-3xl -rotate-3 transform scale-102 -z-10 shadow-xs" />
+            <div className="bg-white p-2.5 rounded-3xl border border-slate-200/80 shadow-md w-full overflow-hidden">
+              <img
+                src="/src/assets/images/campus_students_1780561191262.png"
+                alt="UniGrowth Happy Campus Life"
+                className="w-full h-auto rounded-2xl object-cover hover:scale-102 transition-transform duration-500"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* Feature summary links trigger */}
+        <div className="flex justify-center pt-16">
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            className="cursor-pointer inline-flex flex-col items-center gap-1.5 text-slate-400 hover:text-slate-600"
             onClick={onStartQuiz}
-            className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(16,185,129,0.25)] flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
           >
-            <Compass className="w-5 h-5 text-white" />
-            나의 성장 DNA 진단 시작하기
-          </button>
-          <button
-            onClick={onGoToPlanner}
-            className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 font-bold rounded-xl transition-all duration-300 transform hover:-translate-y-1 border border-slate-200 shadow-xs flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
-          >
-            <ClipboardList className="w-5 h-5 text-slate-600" />
-            수행도 상승 플래너 공간
-          </button>
-        </motion.div>
-
-        {/* Feature quick summary grid */}
-        <motion.div
-          variants={itemVariants}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-16 max-w-4xl mx-auto"
-        >
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all text-left space-y-4 group hover:border-emerald-200/50">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center border border-emerald-100 group-hover:scale-110 transition-transform">
-              <Compass className="w-5 h-5 text-emerald-600" />
-            </div>
-            <h3 className="font-bold text-lg text-slate-900">1. 성향 맞춤 진단</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              5문항의 정교한 퀴즈로 추진파, 계획파, 학구파, 네트워킹파 등 성장 DNA 유형을 실시간 큐레이션합니다.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all text-left space-y-4 group hover:border-indigo-200/50">
-            <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center border border-indigo-100 group-hover:scale-110 transition-transform">
-              <Target className="w-5 h-5 text-indigo-600" />
-            </div>
-            <h3 className="font-bold text-lg text-slate-900">2. 습관 & 루틴 매니저</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              내 성향에 결속되는 추천 데일리 습관을 바로 연동하여 채우고 기록하는 지능형 액션 트래커를 장착했습니다.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all text-left space-y-4 group hover:border-amber-200/50">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-100 group-hover:scale-110 transition-transform">
-              <BookOpen className="w-5 h-5 text-amber-600" />
-            </div>
-            <h3 className="font-bold text-lg text-slate-900">3. 역량 리소스 허브</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              대학생이 갖춰두어야 할 필수 자격증, 핵심 어학 팁과 엄선 대외활동 정보를 깔끔하게 큐레이션해 드립니다.
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          className="pt-12 cursor-pointer inline-flex flex-col items-center gap-1.5 text-slate-400 hover:text-slate-600"
-          onClick={onStartQuiz}
-        >
-          <span className="text-xs uppercase tracking-widest font-mono">스크롤하여 성장 진단받기</span>
-          <ChevronDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
+            <span className="text-[10px] uppercase tracking-widest font-mono font-bold">스크롤하여 자세히 알아보기</span>
+            <ChevronDown className="w-4 h-4" />
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
